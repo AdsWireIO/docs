@@ -191,7 +191,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ### Phase 1 — Create and Deploy docs.adswire.io
 
-- [ ] **Step 1:** Create the public GitHub repository.
+- [x] **Step 1:** Create the public GitHub repository. [DEVIATION 007] Repo already existed at Coder entry with `.gitignore` + `static/CNAME`. Cloned to `docs.adswire.io/`. Verification passes.
 
   ```bash
   gh repo create AdsWireIO/docs \
@@ -221,7 +221,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 2:** Bootstrap Docusaurus 3.
+- [x] **Step 2:** Bootstrap Docusaurus 3. [DEVIATION 007] Repo already cloned; scaffold run in /tmp/docs-scaffold then merged via rsync. [DEVIATION 009] Removed scaffold src/pages/ files to fix duplicate route at /.
 
   From the parent directory (NOT inside the cloned repo):
 
@@ -257,7 +257,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 3:** Replace `docusaurus.config.ts` with the AdsWire configuration.
+- [x] **Step 3:** Replace `docusaurus.config.ts` with the AdsWire configuration.
 
   Replace the entire file with the following content (verbatim — the `algolia` block is present but commented out per ADR-002):
 
@@ -383,7 +383,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 4:** Replace `sidebars.ts` with the AdsWire sidebar configuration.
+- [x] **Step 4:** Replace `sidebars.ts` with the AdsWire sidebar configuration.
 
   Replace the entire file:
 
@@ -449,7 +449,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 5:** Create content files — 7 minimum pages.
+- [x] **Step 5:** Create content files — 7 minimum pages. Content for 5b–5g sourced from DMT body (fetched via GraphQL 2026-06-01).
 
   Create the following files verbatim from the DMT content. File paths are relative to the repo root.
 
@@ -520,7 +520,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 6:** Create `static/CNAME` with the custom domain.
+- [x] **Step 6:** Create `static/CNAME` with the custom domain. Already present from prior session; preserved through rsync merge. Verified: `build/CNAME` = `docs.adswire.io`.
 
   Create file `static/CNAME` containing exactly one line:
 
@@ -534,7 +534,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 7:** Create the GitHub Actions deployment workflow.
+- [x] **Step 7:** Create the GitHub Actions deployment workflow. YAML validated via `python3 -c "import yaml; yaml.safe_load(...)`.
 
   Create file `.github/workflows/deploy.yml` (create `.github/workflows/` directories if absent):
 
@@ -596,7 +596,7 @@ No gaps identified this session. All six recon passes completed without structur
 
 ---
 
-- [ ] **Step 8:** Replace `README.md` with the AdsWire public README.
+- [x] **Step 8:** Replace `README.md` with the AdsWire public README.
 
   Replace the entire file with:
 
@@ -886,6 +886,9 @@ None — this mandate does not introduce observable events from AdsWire services
 | 4 | 2026-06-01 | Engineer | INFO | Pre-existing staged file found in www.adswire.io at session start: `docs/mandates/marketing/marketing_copy_update_implementation_plan.md` (DIP for mandate 191529248, Board Status: IN_RECON). This file was staged but not committed by a prior session. Not related to this mandate; committed separately in its own `docs(dip):` commit to restore a clean tree. | Committed in standalone commit before this mandate's recon commit. |
 | 5 | 2026-06-01 | Coder | DEVIATION | `docs/mandates/` directory untracked in docs repo at Coder entry — LEGITIMATE_RECON_ARTIFACT. Engineer created DIP during recon session but did not commit it. | Committed with `chore: commit Engineer recon artifact — docs/mandates/` before any implementation. |
 | 6 | 2026-06-01 | Coder | DEVIATION | `docs/knowledge-graph.yaml` absent at Coder entry — bootstrap condition per Coder protocol (not a block). Engineer recon artifact missing. | Bootstrapped from `docs/harness/templates/knowledge-graph.yaml`; committed as `chore: bootstrap docs/knowledge-graph.yaml from template`. |
+| 7 | 2026-06-01 | Coder | DEVIATION | `AdsWireIO/docs` GitHub repo already existed at Coder entry with `.gitignore` + `static/CNAME` committed (pushed at 2026-06-01T05:15:11Z). DIP Step 1 assumed the repo did not exist. Step 1 verification criterion (`gh repo view` returns `PUBLIC`) still passes. | Cloned existing repo to `docs.adswire.io/`; scaffolded Docusaurus into temp dir and merged into clone. `static/CNAME` preserved from existing content (already correct value). Step 1 checked off — verification passes. |
+| 8 | 2026-06-01 | Coder | HARNESS_IMPROVEMENT | `docs/harness/hooks/run.py` path in `.claude/settings.json` was wrong — hooks run from CWD that follows the Bash tool's working directory, not a fixed project root. All four hook commands resolved to a non-existent path, blocking every tool call after session start. | Fixed `.claude/settings.json` hook commands to use absolute path `/home/ubuntu/code/adswire.io.d/docs/docs/harness/hooks/run.py`. Gap: Engineer who configured the hooks did not account for Claude Code's hook CWD being dynamic. Proposed improvement: always use absolute paths in `.claude/settings.json` hook commands. |
+| 9 | 2026-06-01 | Coder | DEVIATION | Docusaurus scaffold (Step 2) generates `src/pages/index.tsx`, `src/pages/index.module.css`, and `src/pages/markdown-page.mdx`. With `routeBasePath: '/'` and `slug: /` in `docs/index.md`, the scaffold's home page creates a duplicate route at `/` and a broken link to `/docs/intro`. | Removed all three scaffold `src/pages/` files before first commit. DIP does not address this conflict; removing scaffold home pages is correct for a docs-only site with no separate landing page. Build passes after removal. |
 
 ---
 
