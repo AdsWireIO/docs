@@ -1,0 +1,72 @@
+# docs/knowledge-graph.yaml
+#
+# Project knowledge graph — bootstrapped from template by Coder session 2026-06-01
+# Mandate: docs_adswire_io_implementation_plan.md (DEVIATION 006)
+#
+# Full guide: docs/harness/vendor/harnessable/references/knowledge-graph.md
+
+meta:
+  version: "0.1.0"
+  layer: project
+  extends: docs/harness/vendor/harnessable/KNOWLEDGE_GRAPH.yaml
+  harnessable_version: "main"
+  project: "adswire-docs"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAMESPACES
+# ─────────────────────────────────────────────────────────────────────────────
+
+namespaces:
+  adswire:
+    description: >
+      Core concepts specific to the AdsWire product and documentation site.
+    source: internal
+  github_pages:
+    description: >
+      GitHub Pages deployment concepts for docs.adswire.io.
+    source: https://docs.github.com/en/pages
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONCEPTS
+# ─────────────────────────────────────────────────────────────────────────────
+
+concepts:
+  adswire.DocsSubdomain:
+    type: concept
+    definition: >
+      The public documentation site at docs.adswire.io, served by GitHub Pages
+      from the AdsWireIO/docs repository. Docusaurus 3 with routeBasePath: '/'.
+    properties:
+      url: https://docs.adswire.io
+      repo: AdsWireIO/docs
+      framework: Docusaurus 3
+      dns: CNAME docs → adswireio.github.io (grey cloud / DNS-only)
+    see: docs/mandates/docs_adswire_io_implementation_plan.md
+
+  adswire.MCPServer:
+    type: concept
+    definition: >
+      AdsWire's Model Context Protocol server at api.adswire.io that exposes
+      paid media management tools to AI agents (Claude Desktop, claude.ai,
+      and any MCP-compatible client).
+    properties:
+      endpoint: api.adswire.io
+      protocol: MCP (Model Context Protocol)
+    see: https://www.adswire.io
+
+  github_pages.NativeDeployment:
+    type: concept
+    definition: >
+      GitHub Pages deployment method using actions/upload-pages-artifact@v3 and
+      actions/deploy-pages@v4 with GITHUB_TOKEN (no PAT or SSH key required).
+      Pages source must be set to "GitHub Actions" in repo settings.
+    properties:
+      workflow_action: actions/deploy-pages@v4
+      artifact_action: actions/upload-pages-artifact@v3
+    see: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ALIGNMENTS
+# ─────────────────────────────────────────────────────────────────────────────
+
+alignments: []
