@@ -8,8 +8,11 @@
 .docusaurus
 .cache-loader
 
-# Harnessable framework
+# Harnessable framework — internal files excluded from public repo
 .harnessable/
+AGENTS.md
+docs/harness/
+.claude/
 
 # Misc
 .DS_Store
