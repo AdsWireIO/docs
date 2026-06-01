@@ -1,0 +1,5 @@
+# harnessable — all framework files excluded from public repo
+.harnessable/
+AGENTS.md
+docs/harness/
+.claude/
