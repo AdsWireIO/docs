@@ -24,3 +24,8 @@ docs/harness/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.harness/
+.claude/*
+!.claude/settings.json
+!.claude/commands/
+.harnessable/logs/
