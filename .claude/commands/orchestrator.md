@@ -33,7 +33,7 @@ Load project governance from `AGENTS.md`.
    If genuinely new territory: novel → RESEARCHING.
 
 3. Set board to IN_PROGRESS.
-   Via gh CLI: `gh api graphql` — set this item's status to IN_PROGRESS on https://github.com/orgs/AdsWireIO/projects/1
+   # REPLACE: adapt board mutation to your tracker integration
 
 4. If templated: state which prior TOM this matches
    and what the pattern is before proceeding.

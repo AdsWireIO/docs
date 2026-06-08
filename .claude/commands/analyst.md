@@ -48,4 +48,4 @@ Before gathering any signal:
 3. Declare scope in the IB header before gathering any signals.
 
 4. Set board to IN_PROGRESS.
-   Via gh CLI: `gh api graphql` — set this item's status to IN_PROGRESS on https://github.com/orgs/AdsWireIO/projects/1
+   # REPLACE: adapt board mutation to your tracker integration
