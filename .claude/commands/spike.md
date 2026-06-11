@@ -42,4 +42,4 @@ Before writing a single line of implementation:
 3. Declare the time box (default 2h) and scope boundary (one sentence).
    If the work touches auth, payments, data migrations, or production
    configuration: stop and escalate to the full pipeline first.
-   (No additional project-specific surfaces — see AGENTS.md Risk Profile.)
+   # REPLACE: add project-specific high-risk surface areas here
