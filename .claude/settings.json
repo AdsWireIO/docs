@@ -9,15 +9,6 @@
           }
         ],
         "matcher": "Bash"
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 docs/harness/hooks/run.py pre_tool_use"
-          }
-        ],
-        "matcher": "Bash"
       }
     ],
     "PostToolUse": [
@@ -26,15 +17,6 @@
           {
             "type": "command",
             "command": "python3 /home/ubuntu/code/adswire.io.d/docs/docs/harness/hooks/run.py post_tool_use"
-          }
-        ],
-        "matcher": ""
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 docs/harness/hooks/run.py post_tool_use"
           }
         ],
         "matcher": ""
@@ -48,14 +30,6 @@
             "command": "python3 /home/ubuntu/code/adswire.io.d/docs/docs/harness/hooks/run.py stop"
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 docs/harness/hooks/run.py stop"
-          }
-        ]
       }
     ],
     "PreCompact": [
@@ -64,14 +38,6 @@
           {
             "type": "command",
             "command": "python3 /home/ubuntu/code/adswire.io.d/docs/docs/harness/hooks/run.py pre_compact"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 docs/harness/hooks/run.py pre_compact"
           }
         ]
       }
