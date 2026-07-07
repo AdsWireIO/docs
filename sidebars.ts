@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
       items: [],
     },
     'authentication',
+    'google-workspace',
     'governance',
     'pricing',
     'changelog',
